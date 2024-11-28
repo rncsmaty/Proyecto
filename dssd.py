@@ -187,6 +187,37 @@ def eliminar_datos():
     else:
         print("Opción no válida.")
 
+def buscar_persona():  # Buscar personas
+    """Busca una persona en la tabla de miembros por diferentes criterios."""
+    print("\n--- Buscar Persona ---")
+    print("Puedes buscar por:")
+    print("1. Nombre")
+    print("2. Apellido")
+    print("3. ID de Usuario")
+    print("4. Número de Documento")
+    
+    criterio = input("Selecciona el criterio de búsqueda (1-4): ")
+    valor = input("Ingresa el valor a buscar: ")
+    
+    # Convertir la búsqueda a string (para números como ID y Documento)
+    if criterio == "1":
+        resultado = tabla_miembros[tabla_miembros["Nombre"] == valor]
+    elif criterio == "2":
+        resultado = tabla_miembros[tabla_miembros["Apellido"] == valor]
+    elif criterio == "3":
+        resultado = tabla_miembros[tabla_miembros["ID_Usuario"].astype(str) == str(valor)]
+    elif criterio == "4":
+        resultado = tabla_miembros[tabla_miembros["Número de Documento"].astype(str) == str(valor)]
+    else:
+        print("Criterio no válido.")
+        return
+    
+    if resultado.empty:
+        print("No se encontraron resultados para la búsqueda.")
+    else:
+        print("\nResultados de la búsqueda:")
+        print(resultado.to_string(index=False))
+
 
 # Menú principal
 def menu():
