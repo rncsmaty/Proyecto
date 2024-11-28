@@ -188,9 +188,6 @@ def eliminar_datos():
         print("Opción no válida.")
 
 
-# Aquí continúa el resto de las funciones como en tu código original.
-# Las otras funciones están bien estructuradas.
-
 # Menú principal
 def menu():
     cargar_tablas()
